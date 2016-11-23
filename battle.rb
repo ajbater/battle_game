@@ -11,7 +11,6 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-
     session[:player1] = params[:player1]
     session[:player2] = params[:player2]
     redirect '/play'
@@ -21,6 +20,12 @@ class Battle < Sinatra::Base
     @player1 = session[:player1]
     @player2 = session[:player2]
     erb(:play)
+  end
+
+  get '/confirm_attack' do
+    @player1 = session[:player1]
+    @player2 = session[:player2]
+    erb(:confirm_attack)
   end
 
   # start the server if ruby file executed directly
